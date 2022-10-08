@@ -14,3 +14,9 @@ class Solution:
         list.append(root.val)
         list = self.__dfs(root.left, list)
         return self.__dfs(root.right, list)
+
+tercer = TreeNode(3)
+segundo = TreeNode(2, tercer)
+primer = TreeNode(1, None, segundo)
+sol = Solution()
+print(sol.preorderTraversal(primer))
