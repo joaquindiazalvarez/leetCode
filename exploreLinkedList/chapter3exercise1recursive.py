@@ -10,11 +10,16 @@ class Solution:
     def __rec(self, prev, current, head):
         if current == None:
             return head
+        # this function could be done with 2 args
+        # next if is not necessary
         if current.next == None:
             head = current
+        # if i do head = self.__rec(current, current.next), i will obtain in the last recursion, the last node
         head = self.__rec(current, current.next, head)
         current.next = prev
+        # and i could return it over and over
         return head
+    
     
 
 
