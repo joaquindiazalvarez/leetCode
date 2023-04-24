@@ -6,9 +6,11 @@ class ListNode:
         self.next = next
 class Solution:
     def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
-        if head.next == None:
-            return None
+        # this if may be removed
+        #if head.next == None:
+        #    return None
         current = head
+        # we give an ofset to the first pinter
         for i in range(n):
             current = current.next
             if current == None:
@@ -38,4 +40,4 @@ node5 = ListNode(1)
 node6 = ListNode(2)
 node5.next = node6
 
-print(sol.removeNthFromEnd(node5, 2))
+print(sol.removeNthFromEnd(node0, 2))
