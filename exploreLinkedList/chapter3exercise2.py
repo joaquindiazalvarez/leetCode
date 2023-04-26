@@ -16,9 +16,9 @@ class Solution:
             else:
                 current = current.next
         currentprint = dummy.next
-        while currentprint:
-            print(currentprint.val)
-            currentprint = currentprint.next
+        #while currentprint:
+        #    print(currentprint.val)
+        #    currentprint = currentprint.next
         return dummy.next
 node0 = ListNode(7)
 node1 = ListNode(7)
