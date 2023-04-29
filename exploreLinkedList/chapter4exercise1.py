@@ -7,14 +7,19 @@ class MyLinkedList:
     def __init__(self):
         self.head = None
         
-
+    def __len__(self):
+        current = self.head
+        i = 0
+        while current:
+            current = current.next
+            i += 1
+        return i
     def get(self, index: int) -> int:
+        if index >= len(self):
+            return -1
         current = self.head
         for _ in range(index):
-            if current:
-                current = current.next
-            else:
-                return
+            current = current.next
         return current.val
 
     def addAtHead(self, val: int) -> None:
@@ -35,25 +40,26 @@ class MyLinkedList:
             current = current.next
         current.next = new
         new.prev = current
-        return new
+        return 
 
     def addAtIndex(self, index: int, val: int) -> None:
         if index == 0:
             self.addAtHead(val)
             return
+        if index > len(self):
+            return -1
+        elif index == len(self):
+            self.addAtTail(val)
+            return
         new = self.ListNode(val)
         current = self.head
         for _ in range(index):
-            if current.next:
-                current = current.next
-            else:
-                self.addAtTail(val)
-                return new
+            current = current.next 
         new.prev = current.prev
         new.next = current
         new.prev.next = new
         current.prev = new
-        return new
+        return 
 
     def deleteAtIndex(self, index: int) -> None:
         if index == 0:
@@ -61,16 +67,15 @@ class MyLinkedList:
             if self.head:
                 self.head.prev = None
             return
+        if index >= len(self):
+            return -1
         current = self.head
         for _ in range(index):
-            if current.next:
                 current = current.next
-            else:
-                return
         current.prev.next = current.next
-        current.next.prev = current.prev
+        if current.next:
+            current.next.prev = current.prev
         return current
-
 
 # Your MyLinkedList object will be instantiated and called as such:
 # obj = MyLinkedList()
@@ -83,10 +88,10 @@ class MyLinkedList:
 #["MyLinkedList", "addAtHead", "addAtTail", "addAtIndex", "get", "deleteAtIndex", "get"]
 #[[], [1], [3], [1, 2], [1], [1], [1]]
 obj = MyLinkedList()
-print(obj.addAtIndex(0,10))
-print(obj.addAtIndex(0,20))
-print(obj.addAtIndex(1,30))
-print(obj.get(1))
+print(obj.addAtIndex(0,2))
+print(obj.deleteAtIndex(1))
+#print(obj.addAtIndex(1,30))
+#print(obj.get(1))
 """
 print(obj.addAtHead(1))
 print(obj.addAtTail(3))
